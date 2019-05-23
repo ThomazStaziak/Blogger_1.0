@@ -1,7 +1,8 @@
-const section = document.querySelector('.post-area')
-const sectionAll = document.querySelector('.posts-area .row')
+const sectionPosts      = document.querySelector('.post-area')
+const sectionAllPosts   = document.querySelector('.posts-area .row')
+const sectionLastAuthor = document.querySelector('.protfolio-widget')
 
-const genPosts = (section) => {
+const getPosts      = (section) => {
   let html = ``
   fetch('http://localhost:3000/posts/limit/5')
     .then(response => response.json())
@@ -61,13 +62,12 @@ const genPosts = (section) => {
               </div>
             </div>
           `
-          console.log(elem)
         })
         section.innerHTML = html
       })
 }
 
-const genAllPosts = (section) => {
+const getAllPosts   = (section) => {
   let html = ``
   fetch('http://localhost:3000/posts')
     .then(res => res.json())
@@ -122,5 +122,33 @@ const genAllPosts = (section) => {
       })
 }
 
-genPosts(section)
-genAllPosts(sectionAll)
+const getLastAuthor = (section) => {
+  let html = ``
+  fetch('http://localhost:3000/last/author/')
+    .then(res => res.json())
+      .then(data => {
+        data.forEach((elem, index) => {
+          html += `
+            <img class="img-fluid" src="${elem.avatar}" alt="">
+            <a href="#">
+              <h4>${elem.firstName} ${elem.lastName}</h4>
+            </a>
+            <div class="desigmation">
+              <p>Senior blog writer</p>
+            </div>
+            <p>${elem.synopsis}</p>
+            <ul>
+              <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+              <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+              <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
+              <li><a href="#"><i class="fa fa-behance"></i></a></li>
+            </ul>
+          `
+        })
+        section.innerHTML = html
+      })
+}
+
+getPosts(sectionPosts)
+getAllPosts(sectionAllPosts)
+getLastAuthor(sectionLastAuthor)

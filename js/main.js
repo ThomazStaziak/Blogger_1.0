@@ -145,19 +145,6 @@ $(document).ready(function() {
     }
   });
 
-  $(".active-post-carusel").owlCarousel({
-    items: 1,
-    loop: true,
-    margin: 0,
-    dots: false,
-    nav: true,
-    // autoplay: 2500,
-    navText: [
-      "<span class='lnr lnr-arrow-up'></span>",
-      "<span class='lnr lnr-arrow-down'></span>"
-    ]
-  });
-
   //  Start Google map
 
   // When the window has finished loading create our google map below
