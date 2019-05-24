@@ -1,8 +1,9 @@
 const sectionPosts      = document.querySelector('.post-area')
 const sectionAllPosts   = document.querySelector('.posts-area .row')
 const sectionLastAuthor = document.querySelector('.protfolio-widget')
+const sectionPostAside  = document.querySelector('.blog-list')
 
-const getPosts      = (section) => {
+const getPosts       = (section) => {
   let html = ``
   fetch('http://localhost:3000/posts/limit/5')
     .then(response => response.json())
@@ -66,8 +67,7 @@ const getPosts      = (section) => {
         section.innerHTML = html
       })
 }
-
-const getAllPosts   = (section) => {
+const getAllPosts    = (section) => {
   let html = ``
   fetch('http://localhost:3000/posts')
     .then(res => res.json())
@@ -80,7 +80,7 @@ const getAllPosts   = (section) => {
                   <img class="post-img img-fluid" src="${elem.image.replace(/(?:[330-680])+/gi, 335)}" alt="">
                 </figure>
                 <h3>
-                  <a href="blog-details.html">${elem.title}</a>
+                  <a href="blog-details.html">${elem.title.slice(0, 50)}</a>
                 </h3>
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
                 <a href="blog-details.html" class="primary-btn text-uppercase mt-15">continue Reading</a>
@@ -121,20 +121,19 @@ const getAllPosts   = (section) => {
         section.innerHTML = html
       })
 }
-
-const getLastAuthor = (section) => {
+const getLastAuthor  = (section) => {
   let html = ``
   fetch('http://localhost:3000/last/author/')
     .then(res => res.json())
       .then(data => {
         data.forEach((elem, index) => {
           html += `
-            <img class="img-fluid" src="${elem.avatar}" alt="">
+            <img class="img-fluid" src="${elem.avatar}" aposts/lt="">
             <a href="#">
               <h4>${elem.firstName} ${elem.lastName}</h4>
             </a>
             <div class="desigmation">
-              <p>Senior blog writer</p>
+              <p>Blogger of the week</p>
             </div>
             <p>${elem.synopsis}</p>
             <ul>
@@ -148,7 +147,32 @@ const getLastAuthor = (section) => {
         section.innerHTML = html
       })
 }
+const getLatestPosts = (section) => {
+  let html = ``
+  fetch('http://localhost:3000/latest/posts/limit/3')
+    .then(res => res.json())
+      .then(data => {
+        data.forEach(elem => {
+          console.log(elem)
+          html += `
+            <div class="single-popular-post d-flex flex-row">
+							<div class="popular-thumb">
+								<img src="${elem.image.replace(/(?:[330-680])+/gi, 118)}" alt="">
+							</div>
+							<div class="popular-details">
+								<a href="#">
+									<h4>${elem.title.slice(0,50)}</h4>
+								</a>
+								<p class="text-uppercase">${elem.createdAt.slice(0, 10).split('-').reverse().join('/')}</p>
+							</div>
+						</div>
+          `
+        })
+        section.innerHTML = html
+      })
+}
 
 getPosts(sectionPosts)
 getAllPosts(sectionAllPosts)
 getLastAuthor(sectionLastAuthor)
+getLatestPosts(sectionPostAside)

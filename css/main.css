@@ -1801,7 +1801,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 .banner-area {
   background: linear-gradient(0deg, rgba(233, 119, 152, .773), rgba(128, 80, 250, 0.8)), url(../img/banner-bg.jpg) no-repeat center;
   background: -webkit-linear-gradient(0deg, rgba(233, 119, 152, .773), rgba(128, 80, 250, 0.8)), url(../img/banner-bg.jpg) no-repeat center;
-  background: -moz-linear-gradient(0deg, rgba(233, 119, 152, .773)), rgba(128, 80, 250, 0.8)), url(../img/banner-bg.jpg) no-repeat center;
+  background: -moz-linear-gradient(0deg, rgba(233, 119, 152, .773)), rgba(128, 80, 250, 0.8), url(../img/banner-bg.jpg) no-repeat center;
   background: -ms-linear-gradient(0deg, rgba(233, 119, 152, .773), rgba(128, 80, 250, 0.8)), url(../img/banner-bg.jpg) no-repeat center;
   background: -o-linear-gradient(0deg, rgba(233, 119, 152, .773)  rgba(128, 80, 250, 0.8)), url(../img/banner-bg.jpg) no-repeat center;
   background-size: cover; }
@@ -1814,9 +1814,9 @@ body.mobile-nav-active #mobile-nav-toggle {
 
 .banner-content h1 {
   color: #fff;
-  font-size: 60px;
+  font-size: 3em;
   font-weight: 300;
-  line-height: 72px; }
+}
   @media (max-width: 991.98px) {
     .banner-content h1 br {
       display: none; } }
@@ -2719,7 +2719,7 @@ body.mobile-nav-active #mobile-nav-toggle {
   margin-top: 30px; }
 
 .footer-bottom {
-  padding-top: 50px; }
+  padding-top: 30px; }
   @media (max-width: 991px) {
     .footer-bottom {
       padding-top: 20px; } }
