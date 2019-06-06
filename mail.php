@@ -7,8 +7,8 @@
     $mail->Host = 'smtp.gmail.com';
     $mail->SMTPAuth = true;
     $mail->SMTPSecure = 'tls';
-    $mail->Username = 'thomaz@digitalhouse.com';
-    $mail->Password = 'tricolor2011';
+    $mail->Username = '<SEU EMAIL>';
+    $mail->Password = '<SUA SENHA>;
     $mail->Port = 587;
 
     $mail->setFrom('thostaziak@gmail.com');
